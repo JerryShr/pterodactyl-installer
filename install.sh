@@ -94,7 +94,7 @@ while [ "$done" == false ]; do
     "uninstall_canary"
   )
 
-  output "What would you like to do?"
+  output "您想做什麼？"
 
   for i in "${!options[@]}"; do
     output "[$i] ${options[$i]}"
@@ -103,12 +103,12 @@ while [ "$done" == false ]; do
   echo -n "* Input 0-$((${#actions[@]} - 1)): "
   read -r action
 
-  [ -z "$action" ] && error "Input is required" && continue
+  [ -z "$action" ] && error "需要輸入" && continue
 
   valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalid option"
+  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "無效選項"
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && IFS=";" read -r i1 i2 <<<"${actions[$action]}" && execute "$i1" "$i2"
 done
 
-# Remove lib.sh, so next time the script is run the, newest version is downloaded.
+# 刪除 lib.sh，方便下次執行腳本時可以下載最新版本。
 rm -rf /tmp/lib.sh
