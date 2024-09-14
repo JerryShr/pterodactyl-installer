@@ -33,7 +33,7 @@ fn_exists() { declare -F "$1" >/dev/null; }
 if ! fn_exists lib_loaded; then
   # shellcheck source=lib/lib.sh
   source /tmp/lib.sh || source <(curl -sSL "$GITHUB_BASE_URL/$GITHUB_SOURCE"/lib/lib.sh)
-  ! fn_exists lib_loaded && echo "* ERROR: Could not load lib script" && exit 1
+  ! fn_exists lib_loaded && echo "* 錯誤：無法載入 lib 腳本" && exit 1
 fi
 
 # ------------------ Variables ----------------- #
@@ -60,12 +60,12 @@ export MYSQL_DBHOST_PASSWORD=""
 
 ask_letsencrypt() {
   if [ "$CONFIGURE_UFW" == false ] && [ "$CONFIGURE_FIREWALL_CMD" == false ]; then
-    warning "Let's Encrypt requires port 80/443 to be opened! You have opted out of the automatic firewall configuration; use this at your own risk (if port 80/443 is closed, the script will fail)!"
+    warning "Let's Encrypt 需要開啟連接埠 80/443！ 您已選擇退出自動防火牆設定；使用此功能需要您自擔風險（如果連接埠 80/443 關閉，腳本將失敗）！"
   fi
 
-  warning "You cannot use Let's Encrypt with your hostname as an IP address! It must be a FQDN (e.g. node.example.org)."
+  warning "您不能將您的主機名稱用作 IP 位址來使用 Let's Encrypt！它必須是 FQDN（例如node.example.org）。"
 
-  echo -e -n "* Do you want to automatically configure HTTPS using Let's Encrypt? (y/N): "
+  echo -e -n "* 您想使用 Let's Encrypt 自動設定 HTTPS 嗎？(y/N): "
   read -r CONFIRM_SSL
 
   if [[ "$CONFIRM_SSL" =~ [Yy] ]]; then
@@ -74,7 +74,7 @@ ask_letsencrypt() {
 }
 
 ask_database_user() {
-  echo -n "* Do you want to automatically configure a user for database hosts? (y/N): "
+  echo -n "* 您想自動為資料庫主機配置使用者嗎？(y/N): "
   read -r CONFIRM_DBHOST
 
   if [[ "$CONFIRM_DBHOST" =~ [Yy] ]]; then
@@ -84,11 +84,11 @@ ask_database_user() {
 }
 
 ask_database_external() {
-  echo -n "* Do you want to configure MySQL to be accessed externally? (y/N): "
+  echo -n "* 是否要設定MySQL以供外部存取？(y/N): "
   read -r CONFIRM_DBEXTERNAL
 
   if [[ "$CONFIRM_DBEXTERNAL" =~ [Yy] ]]; then
-    echo -n "* Enter the panel address (blank for any address): "
+    echo -n "* 輸入面板位址（任何位址均為空白）："
     read -r CONFIRM_DBEXTERNAL_HOST
     if [ "$CONFIRM_DBEXTERNAL_HOST" == "" ]; then
       MYSQL_DBHOST_HOST="%"
@@ -101,8 +101,8 @@ ask_database_external() {
 }
 
 ask_database_firewall() {
-  warning "Allow incoming traffic to port 3306 (MySQL) can potentially be a security risk, unless you know what you are doing!"
-  echo -n "* Would you like to allow incoming traffic to port 3306? (y/N): "
+  warning "允許傳入流量到達連接埠 3306 (MySQL) 可能會有安全風險，除非您知道自己在做什麼！"
+  echo -n "* 您想允許傳入流量到達連接埠 3306 嗎？(y/N): "
   read -r CONFIRM_DB_FIREWALL
   if [[ "$CONFIRM_DB_FIREWALL" =~ [Yy] ]]; then
     CONFIGURE_DB_FIREWALL=true
@@ -116,11 +116,11 @@ ask_database_firewall() {
 main() {
   # check if we can detect an already existing installation
   if [ -d "/etc/pterodactyl" ]; then
-    warning "The script has detected that you already have Pterodactyl wings on your system! You cannot run the script multiple times, it will fail!"
-    echo -e -n "* Are you sure you want to proceed? (y/N): "
+    warning "該腳本檢測到您的系統上已經有 Pterodactyl 節點！您不能多次執行該腳本，否則會失敗！"
+    echo -e -n "* 您確定要繼續嗎？(y/N): "
     read -r CONFIRM_PROCEED
     if [[ ! "$CONFIRM_PROCEED" =~ [Yy] ]]; then
-      error "Installation aborted!"
+      error "安裝中止！"
       exit 1
     fi
   fi
