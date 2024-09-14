@@ -36,8 +36,8 @@ LOG_PATH="/var/log/pterodactyl-installer.log"
 
 # check for curl
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* curl is required in order for this script to work."
-  echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
+  echo "* 為了使該腳本正常工作，需要使用curl。"
+  echo "* 使用 apt（Debian 及其衍生版本）或 yum/dnf (CentOS) 安裝"
   exit 1
 fi
 
@@ -55,12 +55,12 @@ execute() {
   run_ui "${1//_canary/}" |& tee -a $LOG_PATH
 
   if [[ -n $2 ]]; then
-    echo -e -n "* Installation of $1 completed. Do you want to proceed to $2 installation? (y/N): "
+    echo -e -n "* $1 安裝完成。您想繼續 $2 安裝嗎？(y/N): "
     read -r CONFIRM
     if [[ "$CONFIRM" =~ [Yy] ]]; then
       execute "$2"
     else
-      error "Installation of $2 aborted."
+      error "$2 的安裝已中止。"
       exit 1
     fi
   fi
@@ -71,15 +71,15 @@ welcome ""
 done=false
 while [ "$done" == false ]; do
   options=(
-    "Install the panel"
-    "Install Wings"
-    "Install both [0] and [1] on the same machine (wings script runs after panel)"
-    # "Uninstall panel or wings\n"
+    "安裝 面板"
+    "安裝 節點"
+    "在同一台電腦上安裝 [0] 和 [1]（節點 腳本在面板後面執行）"
+    # "卸下 面板 或 節點\n"
 
-    "Install panel with canary version of the script (the versions that lives in master, may be broken!)"
-    "Install Wings with canary version of the script (the versions that lives in master, may be broken!)"
-    "Install both [3] and [4] on the same machine (wings script runs after panel)"
-    "Uninstall panel or wings with canary version of the script (the versions that lives in master, may be broken!)"
+    "使用腳本的金絲雀版本安裝 面板（位於 master 中的版本可能已損壞！）"
+    "使用腳本的金絲雀版本安裝 節點（位於 master 中的版本可能已損壞！）"
+    "在同一台機器上安裝 [3] 和 [4]（節點 腳本在面板後面執行）"
+    "使用金絲雀版本的腳本卸載 面板 或 節點（位於 master 中的版本可能已損壞！）"
   )
 
   actions=(
