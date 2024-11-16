@@ -11,17 +11,17 @@
 
 想了解更多關於 [Pterodactyl](https://pterodactyl.io/) 的資訊請看在這裡。这个腳本並非由官方 Pterodactyl 項目關聯或認可。
 
-## Features
+## 特色
 
-- Automatic installation of the Pterodactyl Panel (dependencies, database, cronjob, nginx).
-- Automatic installation of the Pterodactyl Wings (Docker, systemd).
-- Panel: (optional) automatic configuration of Let's Encrypt.
-- Panel: (optional) automatic configuration of firewall.
-- Uninstallation support for both panel and wings.
+- 自動安裝 Pterodactyl Panel (dependencies, database, cronjob, nginx)。
+- 自動安裝 Pterodactyl Wings (Docker, systemd)。
+- Panel：（選擇性）Let's Encrypt 自動配置。
+- Panel：（選擇性）firewall 自動配置。
+- 支援 Panel 和 Wings 二者的刪除功能。
 
-## Help and support
+## 協助與支持
 
-For help and support regarding the script itself and **not the official Pterodactyl project**, you can join the [Discord Chat](https://pterodactyl-installer.se/discord).
+關於腳本本身的協助與支持，而非官方 Pterodactyl 項目，您可以加入 [Discord 聊天室](https://pterodactyl-installer.se/discord).
 
 ## Supported installations
 
