@@ -36,8 +36,8 @@ LOG_PATH="/var/log/pterodactyl-installer.log"
 
 # check for curl
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* 為了使該腳本正常工作，需要使用curl。"
-  echo "* 使用 apt（Debian 及其衍生版本）或 yum/dnf (CentOS) 安裝"
+  echo "* curl is required in order for this script to work."
+  echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
   exit 1
 fi
 
@@ -55,12 +55,12 @@ execute() {
   run_ui "${1//_canary/}" |& tee -a $LOG_PATH
 
   if [[ -n $2 ]]; then
-    echo -e -n "* $1 安裝完成。您想繼續 $2 安裝嗎？(y/N): "
+    echo -e -n "* Installation of $1 completed. Do you want to proceed to $2 installation? (y/N): "
     read -r CONFIRM
     if [[ "$CONFIRM" =~ [Yy] ]]; then
       execute "$2"
     else
-      error "$2 的安裝已中止。"
+      error "Installation of $2 aborted."
       exit 1
     fi
   fi
@@ -71,15 +71,15 @@ welcome ""
 done=false
 while [ "$done" == false ]; do
   options=(
-    "安裝 面板"
-    "安裝 節點"
-    "在同一台電腦上安裝 [0] 和 [1]（節點 腳本在面板後面執行）"
-    # "卸下 面板 或 節點\n"
+    "Install the panel"
+    "Install Wings"
+    "Install both [0] and [1] on the same machine (wings script runs after panel)"
+    # "Uninstall panel or wings\n"
 
-    "使用腳本的金絲雀版本安裝 面板（位於 master 中的版本可能已損壞！）"
-    "使用腳本的金絲雀版本安裝 節點（位於 master 中的版本可能已損壞！）"
-    "在同一台機器上安裝 [3] 和 [4]（節點 腳本在面板後面執行）"
-    "使用金絲雀版本的腳本卸載 面板 或 節點（位於 master 中的版本可能已損壞！）"
+    "Install panel with canary version of the script (the versions that lives in master, may be broken!)"
+    "Install Wings with canary version of the script (the versions that lives in master, may be broken!)"
+    "Install both [3] and [4] on the same machine (wings script runs after panel)"
+    "Uninstall panel or wings with canary version of the script (the versions that lives in master, may be broken!)"
   )
 
   actions=(
@@ -94,7 +94,7 @@ while [ "$done" == false ]; do
     "uninstall_canary"
   )
 
-  output "您想做什麼？"
+  output "What would you like to do?"
 
   for i in "${!options[@]}"; do
     output "[$i] ${options[$i]}"
@@ -103,12 +103,12 @@ while [ "$done" == false ]; do
   echo -n "* Input 0-$((${#actions[@]} - 1)): "
   read -r action
 
-  [ -z "$action" ] && error "需要輸入" && continue
+  [ -z "$action" ] && error "Input is required" && continue
 
   valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "無效選項"
+  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalid option"
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && IFS=";" read -r i1 i2 <<<"${actions[$action]}" && execute "$i1" "$i2"
 done
 
-# 刪除 lib.sh，方便下次執行腳本時可以下載最新版本。
+# Remove lib.sh, so next time the script is run the, newest version is downloaded.
 rm -rf /tmp/lib.sh
