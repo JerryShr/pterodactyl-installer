@@ -80,13 +80,13 @@ _注意：在某些系統上，您需要在執行一行式命令前已經以 roo
 vagrant up
 ```
 
-If you only want to test a specific distribution, you can run the following.
+如果您只想測試特定發行版，可以執行下列命令。
 
 ```bash
 vagrant up <name>
 ```
 
-Replace name with one of the following (supported installations).
+將名稱替換為以下內容之一（支援的安裝）。
 
 - `ubuntu_jammy`
 - `ubuntu_focal`
@@ -98,15 +98,15 @@ Replace name with one of the following (supported installations).
 - `rockylinux_8`
 - `rockylinux_9`
 
-Then you can use `vagrant ssh <name of machine>` to SSH into the box. The project directory will be mounted in `/vagrant` so you can quickly modify the script locally and then test the changes by running the script from `/vagrant/installers/panel.sh` and `/vagrant/installers/wings.sh` respectively.
+隨後，您可以使用 `vagrant ssh <機器名稱>` 來 SSH 進入機器。該專案目錄會被挂载在 `/vagrant`，這能讓您迅速在本地上修改腳本，然後通過分別執行 `/vagrant/installers/panel.sh` 和 `/vagrant/installers/wings.sh` 指令文檔来測試变更。
 
-### Creating a release
+### 創建版本發行
 
-In `install.sh` github source and script release variables should change every release. Firstly, update the `CHANGELOG.md` so that the release date and release tag are both displayed. No changes should be made to the changelog points themselves. Secondly, update `GITHUB_SOURCE` and `SCRIPT_RELEASE` in `install.sh`. Finally, you can now push a commit with the message `Release vX.Y.Z`. Create a release on GitHub. See [this commit](https://github.com/pterodactyl-installer/pterodactyl-installer/commit/90aaae10785f1032fdf90b216a4a8d8ca64e6d44) for reference.
+在 `install.sh` 中，GitHub 來源和脚本版本變量每個版本都應該做出改變。首先，更新 `CHANGELOG.md` 文件，使版本發行的日期和版本標籤（Release Tag）都能顯示出來。對於變更記錄的項目本身不应该做任何更改。其次，更新 `install.sh` 中的 `GITHUB_SOURCE` 和 `SCRIPT_RELEASE` 變量。最後，您現在可以提交一個具有消息 `Release vX.Y.Z` 的提交。之後，創建 GitHub 上的版本發布。[this commit](https://github.com/pterodactyl-installer/pterodactyl-installer/commit/90aaae10785f1032fdf90b216a4a8d8ca64e6d44) 這個提交。
 
-## Contributors ✨
+## 貢獻者 ✨
 
-Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>, and contributors!
+版权所有 © 2018 - 2024，Vilhelm Prytz，vilhelm@prytznet.se，以及所有貢獻者！
 
 - Created by [Vilhelm Prytz](https://github.com/vilhelmprytz)
 - Maintained by [Linux123123](https://github.com/Linux123123)
