@@ -60,9 +60,9 @@ _\* 表示此指令碼之前支援的操作系統與版本。_
 bash <(curl -s https://pterodactyl-installer.se)
 ```
 
-_Note: On some systems, it's required to be already logged in as root before executing the one-line command (where `sudo` is in front of the command does not work)._
+_注意：在某些系統上，您需要在執行一行式命令前已經以 root 身分登入（即使命令前面有 sudo 也是不起作用的）。_
 
-Here is a [YouTube video](https://www.youtube.com/watch?v=E8UJhyUFoHM) that illustrates the installation process.
+這是一個 [YouTube video](https://www.youtube.com/watch?v=E8UJhyUFoHM) 影片，展示安裝過程。
 
 ## Firewall setup
 
