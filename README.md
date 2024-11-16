@@ -50,11 +50,11 @@ panel 和 Wings 支援的安裝設定清單（此安裝腳本支援的安裝）�
 | AlmaLinux        | 8       | :white_check_mark: | 8.1         |
 |                  | 9       | :white_check_mark: | 8.1         |
 
-_\* Indicates an operating system and release that previously was supported by this script._
+_\* 表示此指令碼之前支援的操作系統與版本。_
 
-## Using the installation scripts
+## 使用安裝腳本
 
-To use the installation scripts, simply run this command as root. The script will ask you whether you would like to install just the panel, just Wings or both.
+要使用安裝腳本，只需以 root 身分執行此命令。腳本會詢問您是想僅安裝面板、僅安裝 Wings 還是都安裝。
 
 ```bash
 bash <(curl -s https://pterodactyl-installer.se)
