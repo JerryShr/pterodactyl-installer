@@ -108,8 +108,7 @@ vagrant up <name>
 
 版权所有 © 2018 - 2024，Vilhelm Prytz，vilhelm@prytznet.se，以及所有貢獻者！
 
-- Created by [Vilhelm Prytz](https://github.com/vilhelmprytz)
-- Maintained by [Linux123123](https://github.com/Linux123123)
+- 由 [Vilhelm Prytz](https://github.com/vilhelmprytz) 創建
+- 由 [Linux123123](https://github.com/Linux123123) 維護
 
-Thanks to the Discord moderators [sam1370](https://github.com/sam1370), [Linux123123](https://github.com/Linux123123) and [sinjs](https://github.com/sinjs) for helping on the Discord server!
-contributors
+感謝 Discord 版主 [sam1370](https://github.com/sam1370)、[Linux123123](https://github.com/Linux123123) 和 [sinjs](https://github.com/sinjs) 在 Discord 伺服器上提供的協助！
