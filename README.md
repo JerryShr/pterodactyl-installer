@@ -23,13 +23,13 @@
 
 關於腳本本身的協助與支持，而非官方 Pterodactyl 項目，您可以加入 [Discord 聊天室](https://pterodactyl-installer.se/discord).
 
-## Supported installations
+## 支援的安裝
 
-List of supported installation setups for panel and Wings (installations supported by this installation script).
+panel 和 Wings 支援的安裝設定清單（此安裝腳本支援的安裝）。
 
-### Supported panel and wings operating systems
+### 支援的 panel 和 Wings 操作系統
 
-| Operating System | Version | Supported          | PHP Version |
+| 操作系統          | 版本    | 是否支援            | PHP 版本    |
 | ---------------- | ------- | ------------------ | ----------- |
 | Ubuntu           | 14.04   | :red_circle:       |             |
 |                  | 16.04   | :red_circle: \*    |             |
