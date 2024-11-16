@@ -62,19 +62,19 @@ bash <(curl -s https://pterodactyl-installer.se)
 
 _注意：在某些系統上，您需要在執行一行式命令前已經以 root 身分登入（即使命令前面有 sudo 也是不起作用的）。_
 
-這是一個 [YouTube video](https://www.youtube.com/watch?v=E8UJhyUFoHM) 影片，展示安裝過程。
+這是一個 [YouTube](https://www.youtube.com/watch?v=E8UJhyUFoHM) 影片，展示安裝過程。
 
-## Firewall setup
+## 防火牆設置
 
-The installation scripts can install and configure a firewall for you. The script will ask whether you want this or not. It is highly recommended to opt-in for the automatic firewall setup.
+安裝腳本可以為您安裝和配置防火牆。腳本將詢問您是否要這樣做。強烈建議選擇自動防火牆設置。
 
-## Development & Ops
+## 開發與運營
 
-### Testing the script locally
+### 在本地測試腳本
 
-To test the script, we use [Vagrant](https://www.vagrantup.com). With Vagrant, you can quickly get a fresh machine up and running to test the script.
+為了測試腳本，我們使用 [Vagrant](https://www.vagrantup.com)。用 Vagrant，你可以快速啟動並運行一個新鮮的機器來測試這腳本。
 
-If you want to test the script on all supported installations in one go, just run the following.
+如果您想一次性在所有支援的安裝環境中測試腳本，只需執行如下命令。
 
 ```bash
 vagrant up
